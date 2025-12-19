@@ -1,0 +1,13 @@
+{
+  "name": "docuware-chatbot",
+  "version": "2.0.0",
+  "description": "DocuWare AI Chatbot with multi-path interface and web search - Portfolio Demo",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1"
+  },
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'No build step required'",
+    "deploy": "netlify deploy --prod"
+  }
+}

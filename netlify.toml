@@ -1,0 +1,12 @@
+# netlify.toml
+# Netlify configuration file
+
+[build]
+  # No build command needed for this simple setup
+  publish = "public"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

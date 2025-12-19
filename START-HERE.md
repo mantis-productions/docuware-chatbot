@@ -113,7 +113,7 @@ Here's everything in this package:
    git add .
    git commit -m "Initial setup"
    # Create repo on GitHub, then:
-   git remote add origin https://github.com/YOUR-USERNAME/docuware-chatbot.git
+   git remote add origin https://github.com/mantis-productions/docuware-chatbot.git
    git push -u origin main
    ```
 

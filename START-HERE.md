@@ -160,7 +160,7 @@ Here's everything in this package:
 
 **Links to share:**
 - Live demo: `https://your-chatbot.netlify.app`
-- Source code: `https://github.com/your-username/docuware-chatbot`
+- Source code: `https://github.com/mantis-productions/docuware-chatbot`
 
 ---
 

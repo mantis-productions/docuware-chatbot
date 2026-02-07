@@ -22,27 +22,139 @@
         }
 
         .chat-container {
-            width: 100%;
-            max-width: 800px;
-            height: 700px;
+            /* width: 100%; */
+            max-width: 400px;
+            height: 490px;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
+        /* Chat Header */
         .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
             background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
-            color: white;
-            padding: 20px 25px;
+            
+            flex-shrink: 0;
+            
         }
 
+        /* Header Left Side */
+        .header-left {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* Header Brand - Logo and Title */
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Logo Icon 
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }*/
+
+        /* H1 Title */
         .header-brand h1 {
+            margin: 0;
             font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 8px;
+            font-weight: 700;
+            color: white;
+        }
+
+        /* Header Info - Mode and Counter Row */
+        .header-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-left: 48px; /* Align with text, not logo */
+        }
+
+        /* Conversation Mode */
+        .conversation-mode {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+        }
+
+        /* Message Counter */
+        .message-counter {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+        }
+
+        /* Header Right Side */
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Reset Button - Wider */
+        .reset-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 32px; /* Increased horizontal padding */
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-width: 140px; /* Ensures consistent width */
+            white-space: nowrap;
+        }
+
+        .reset-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .reset-button:active {
+            transform: translateY(0);
+        }
+
+        /* Header Brand - Flexbox for logo and title */
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px; /* Space between logo and text */
+        }
+
+        /* Logo Icon */
+        .logo-icon {
+            width: 40px; /* Adjust size as needed */
+            height: 40px;
+            object-fit: contain; /* Maintains aspect ratio */
+        }
+
+        /* Optional: Add a subtle animation on hover */
+        .logo-icon:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s ease;
+        }
+
+        /* Adjust h1 margin if needed */
+        .header-brand h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
         }
 
         .demo-badge {
@@ -92,35 +204,35 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px 20px;
+            padding: 20px 20px;
             background: #f9fafb;
         }
 
         .selection-title {
             text-align: center;
             color: #1f2937;
-            margin-bottom: 30px;
-            font-size: 28px;
+            margin-bottom: 20px;
+            font-size: 20px;
             font-weight: 600;
         }
 
         .path-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+         /*   grid-template-columns: repeat(2, 1fr); */
             gap: 20px;
             max-width: 700px;
             width: 100%;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .path-button {
-            background: white;
-            border: 2px solid #e5e7eb;
-            border-radius: 16px;
-            padding: 30px 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
+        background: white;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        /* text-align: center; */
+        display: flex;
+        padding: 6px;
         }
 
         .path-button:hover {
@@ -129,23 +241,32 @@
             box-shadow: 0 8px 20px rgba(79, 70, 229, 0.15);
         }
 
-        .path-icon {
-            font-size: 48px;
+        .path-icon
+        {
+            font-size: 28px;
             display: block;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
+            width: 25%;
+        }
+
+        .path-text {
+            width: 75%;
+            margin: auto;
+            text-align: left;
+
         }
 
         .path-button h4 {
-            margin: 0 0 8px 0;
+          /*  margin: 0 0 8px 0; */
             color: #1f2937;
-            font-size: 18px;
+            font-size: 14px;
             font-weight: 600;
         }
 
         .path-button p {
             margin: 0;
             color: #6b7280;
-            font-size: 14px;
+            font-size: 11px;
             line-height: 1.5;
         }
 
@@ -158,14 +279,14 @@
         }
 
         /* Chat Interface */
-        .chat-messages {
+        #chatMessages {
             flex: 1;
             overflow-y: auto;
             padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 15px;
-            background: #f8f9fa;
+            background: #f9fafb;
         }
 
         .message {
@@ -226,16 +347,16 @@
 
         #userInput {
             flex: 1;
-            padding: 14px 18px;
+            padding: 6px 12px;
             border: 2px solid #e1e4e8;
-            border-radius: 25px;
-            font-size: 15px;
+            border-radius: 6px;
+            font-size: 14px;
             outline: none;
             transition: border-color 0.3s;
         }
 
         #userInput:focus {
-            border-color: #4F46E5;
+            border-color: #e1e4e8;
         }
 
         #userInput:disabled {
@@ -244,13 +365,13 @@
         }
 
         #sendButton {
-            padding: 14px 28px;
-            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+            padding: 6px 12px;
+            background: #302ab2;
             color: white;
             border: none;
-            border-radius: 25px;
-            font-size: 15px;
-            font-weight: 600;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
         }
@@ -314,16 +435,16 @@
             font-size: 14px;
         }
 
-        /* Scrollbar styling */
-        .chat-messages::-webkit-scrollbar {
+        /* Scrollbar styling - fix the selector */
+        #chatMessages::-webkit-scrollbar {
             width: 6px;
         }
 
-        .chat-messages::-webkit-scrollbar-track {
+        #chatMessages::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
 
-        .chat-messages::-webkit-scrollbar-thumb {
+        #chatMessages::-webkit-scrollbar-thumb {
             background: #4F46E5;
             border-radius: 3px;
         }
@@ -340,7 +461,7 @@
             }
             
             .path-grid {
-                grid-template-columns: 1fr;
+              /*  grid-template-columns: 1fr; */
                 gap: 15px;
             }
 
@@ -361,6 +482,36 @@
                 font-size: 22px;
             }
         }
+        /* Responsive adjustments */
+@media (max-width: 768px) {
+    .chat-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .header-info {
+        padding-left: 0;
+        flex-wrap: wrap;
+    }
+    
+    .header-right {
+        width: 100%;
+    }
+    
+    .reset-button {
+        width: 100%;
+    }
+    
+    .logo-icon {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .header-brand h1 {
+        font-size: 20px;
+    }
+}
     </style>
 </head>
 <body>
@@ -369,8 +520,9 @@
         <div id="pathSelectionScreen">
             <div class="chat-header">
                 <div class="header-brand">
-                    <h1>DocuWare AI Assistant</h1>
-                    <span class="demo-badge">Portfolio Demo by Mark</span>
+                    <img src="src/DocuWareIcon.webp" alt="DocuBot Logo" class="logo-icon">
+                    <h1>DocuBot</h1>
+                    <!-- <span class="demo-badge">Portfolio Demo by Mark</span> -->
                 </div>
             </div>
             
@@ -378,45 +530,60 @@
                 <h2 class="selection-title">Get in touch with our team</h2>
                 <div class="path-grid">
                     <button class="path-button" onclick="selectPath('customer')">
-                        <span class="path-icon">👤</span>
-                        <h4>I am a customer</h4>
-                        <p>Get help with your DocuWare account and products</p>
+                        <div class="path-icon">👤</div>
+                        <div class="path-text">
+                            <h4>I am a customer</h4>
+                            <p>Get help with your DocuWare account and products</p>
+                        
                     </button>
                     
                     <button class="path-button" onclick="selectPath('technical')">
-                        <span class="path-icon">🔧</span>
-                        <h4>I need technical support</h4>
-                        <p>Technical issues, setup, and troubleshooting</p>
+                        <div class="path-icon">🔧</div>
+                        <div class="path-text">
+                            <h4>I need technical support</h4>
+                            <p>Technical issues, setup, and troubleshooting</p>
+                    </div>
                     </button>
                     
                     <button class="path-button" onclick="selectPath('partner')">
-                        <span class="path-icon">🤝</span>
-                        <h4>I am a partner</h4>
-                        <p>Partner resources and support</p>
+                        <div class="path-icon">🤝</div>
+                        <div class="path-text">
+                            <h4>I am a partner</h4>
+                            <p>Partner resources and support</p>    
+                        </div>
                     </button>
                     
                     <button class="path-button" onclick="selectPath('demo')">
-                        <span class="path-icon">📊</span>
+                        <div class="path-icon">📊</div>
+                        <div class="path-text">
                         <h4>I want info/product demo</h4>
                         <p>Learn about DocuWare products and request demos</p>
+                        </div>
                     </button>
                 </div>
                 <p class="disclaimer">
-                    Note: This is a portfolio demonstration. For actual DocuWare support, visit docuware.com
+                    Note: This is ademonstration. For actual DocuWare support, visit <a href="https://start.docuware.com
+                </p>" target="_blank">https://start.docuware.com</a>
                 </p>
             </div>
         </div>
 
         <!-- Chat Interface -->
         <div id="chatInterface" class="hidden">
+            <!-- Chat Interface Header -->
             <div class="chat-header">
-                <div class="header-brand">
-                    <h1>DocuWare AI Assistant</h1>
-                    <div class="header-controls">
+                <div class="header-left">
+                    <div class="header-brand">
+                        <img src="src/DocuWareIcon.webp" alt="DocuBot Logo" class="logo-icon">
+                        <h1>DocuBot</h1>
+                    </div>
+                    <div class="header-info">
                         <span id="conversationMode" class="conversation-mode"></span>
                         <span id="messageCounter" class="message-counter">0/20 messages</span>
-                        <button class="reset-button" onclick="resetConversation()">🔄 Start Over</button>
                     </div>
+                </div>
+                <div class="header-right">
+                    <button class="reset-button" onclick="resetConversation()">🔄 Main Screen</button>
                 </div>
             </div>
             
@@ -435,7 +602,7 @@
             </div>
 
             <div id="rateLimitNotice" class="rate-limit-notice hidden">
-                Message limit reached. Click "Start Over" to begin a new conversation.
+                Message limit reached. Click "Main Screen" to begin a new conversation.
             </div>
         </div>
     </div>
@@ -556,7 +723,7 @@
                 if (data.rateLimited) {
                     rateLimitReached = true;
                     document.getElementById('rateLimitNotice').classList.remove('hidden');
-                    addMessage('Rate limit reached. Please click "Start Over" to begin a new conversation.', 'bot');
+                    addMessage('Rate limit reached. Please click "Main Screen" to begin a new conversation.', 'bot');
                 } else if (data.error) {
                     throw new Error(data.error);
                 } else {

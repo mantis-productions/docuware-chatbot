@@ -20,6 +20,18 @@
             min-height: 100vh;
             padding: 20px;
         }
+        /* Add to your chatbot's CSS */
+body.embedded .chat-header {
+  display: none !important;
+}
+
+body.embedded #chatInterface {
+  height: 100vh !important;
+}
+
+body.embedded #chatMessages {
+  height: calc(100vh - 100px) !important; /* Adjust for input area */
+}
        /* Chat Interface - Main Container */
 #chatInterface {
     display: flex;
@@ -926,6 +938,73 @@
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
+        // In your Netlify chatbot (add to existing code)
+
+        // Check if embedded
+        const isEmbedded = window.self !== window.top;
+
+        // Function to send updates to parent window
+        function sendToParent(data) {
+        if (isEmbedded) {
+            window.parent.postMessage(data, '*');
+        }
+        }
+
+        // Send initial state
+        window.addEventListener('DOMContentLoaded', () => {
+        if (isEmbedded) {
+            // Hide the chatbot's own header
+            const chatHeader = document.querySelector('.chat-header');
+            if (chatHeader) {
+            chatHeader.style.display = 'none';
+            }
+            
+            // Send initial state to parent
+            sendToParent({
+            type: 'chatbot-state',
+            conversationMode: sessionStorage.getItem('conversationMode') || '',
+            messageCount: parseInt(sessionStorage.getItem('messageCount') || '0'),
+            maxMessages: 20
+            });
+        }
+        });
+
+        // Listen for commands from parent
+        window.addEventListener('message', (event) => {
+        if (event.data.type === 'reset-conversation') {
+            resetConversation(); // Your existing reset function
+        }
+        });
+
+        // Update your existing addMessage function to send updates
+        function addMessage(message, sender) {
+        // Your existing addMessage code...
+        
+        // After adding message, send update to parent
+        const messageCount = parseInt(sessionStorage.getItem('messageCount') || '0');
+        sendToParent({
+            type: 'message-added',
+            messageCount: messageCount,
+            maxMessages: 20
+        });
+        }
+
+        // Update your existing conversation mode selection
+        function selectConversationMode(mode) {
+        // Your existing code...
+        sessionStorage.setItem('conversationMode', mode);
+        
+        // Send update to parent
+        sendToParent({
+            type: 'mode-changed',
+            conversationMode: mode
+        });
+        }
+        // Detect embed mode and add class
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('embed') === 'true') {
+  document.body.classList.add('embedded');
+}
     </script>
 </body>
 </html>

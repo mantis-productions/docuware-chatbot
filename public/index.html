@@ -13,506 +13,148 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background:  #FFF;
+            background: #FFF;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
         }
-       /* Embedded mode styles */
-        body.embedded .chat-header,
-        .embedded .chat-header {
-            display: none !important;
-        }
-
-        body.embedded #chatInterface,
-        .embedded #chatInterface {
-            height: 100vh !important;
-            max-height: 100vh !important;
-        }
-
-        body.embedded #chatMessages,
-        .embedded #chatMessages {
-            height: calc(100vh - 100px) !important;
-        }
-
-        body.embedded #pathSelectionScreen,
-        .embedded #pathSelectionScreen {
-            height: 100vh !important;
-        }
-        /* Existing embedded styles */
-        body.embedded .chat-header,
-        .embedded .chat-header {
-            display: none !important;
-        }
-
-        /* Fix the layout for embedded mode */
-        body.embedded #chatInterface,
-        .embedded #chatInterface {
-            display: flex !important;
-            flex-direction: column !important;
-            height: 100vh !important;
-            max-height: 100vh !important;
-            overflow: hidden !important;
-        }
-
-        /* Messages area - scrollable */
-        body.embedded #chatMessages,
-        .embedded #chatMessages {
-            flex: 1 !important;
-            overflow-y: auto !important;
-            overflow-x: hidden !important;
-            padding: 20px !important;
-            background: #f9fafb !important;
-            min-height: 0 !important;
-        }
-
-        /* Input container - fixed at bottom */
-        body.embedded .chat-input-container,
-        .embedded .chat-input-container {
-            flex-shrink: 0 !important;
-            padding: 16px 20px !important;
-            background: white !important;
-            border-top: 1px solid #e5e7eb !important;
-        }
-
-        /* Rate limit notice - fixed at bottom */
-        body.embedded #rateLimitNotice,
-        .embedded #rateLimitNotice {
-            flex-shrink: 0 !important;
-            background: #fef3c7 !important;
-            color: #92400e !important;
-            padding: 12px 20px !important;
-            text-align: center !important;
-        }
-
-        /* Scrollbar styling for embedded messages */
-        body.embedded #chatMessages::-webkit-scrollbar,
-        .embedded #chatMessages::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        body.embedded #chatMessages::-webkit-scrollbar-track,
-        .embedded #chatMessages::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        body.embedded #chatMessages::-webkit-scrollbar-thumb,
-        .embedded #chatMessages::-webkit-scrollbar-thumb {
-            background: #4F46E5;
-            border-radius: 4px;
-        }
-
-        body.embedded #chatMessages::-webkit-scrollbar-thumb:hover,
-        .embedded #chatMessages::-webkit-scrollbar-thumb:hover {
-            background: #4338CA;
-        }
-            /* Chat Interface - Main Container */
-        #chatInterface {
-            display: flex;
-            flex-direction: column;
-            height: 100vh; /* Full viewport height */
-            width: 100%;
-            max-width: 800px; /* Adjust as needed */
-            margin: 0 auto;
-            overflow: hidden; /* Hide overflow on main container */
-            background: white;
-        }
-
-        /* Chat Header - Fixed at top */
-        .chat-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-            background:  #302ab2;
-            color: white;
-            flex-shrink: 0; /* Don't allow to shrink */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            z-index: 10;
-        }
-
-        /* Chat Messages - Scrollable Middle Section */
-        #chatMessages {
-            flex: 1; /* Take up remaining space */
-            overflow-y: auto; /* Enable vertical scrolling */
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            background: white;
-            min-height: 0; /* Critical for flex scrolling */
-        }
-
-        /* Chat Input Container - Fixed at bottom */
-        .chat-input-container {
-            flex-shrink: 0; /* Don't allow to shrink */
-            padding: 16px 24px;
-            background: white;
-            border-top: 1px solid #e5e7eb;
-        /* box-shadow: 0 -2px 8px rgba(0,0,0,0.05); */
-            z-index: 10;
-        }
-
-        /* Chat Input Wrapper */
-        .chat-input-wrapper {
-            display: flex;
-            gap: 12px;
-            max-width: 100%;
-        }
-
-        /* Input Field */
-        #userInput {
-            flex: 1;
-            padding: 12px 16px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 15px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        #userInput:focus {
-            border-color: #302ab2;
-        }
-
-        /* Send Button */
-        #sendButton {
-            padding: 12px 24px;
-            background: #302ab2;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        #sendButton:hover {
-            transform: translateY(-1px);
-        }
-        /* Rate Limit Notice - Fixed at bottom */
-        #rateLimitNotice {
-            flex-shrink: 0;
-            padding: 12px 24px;
-            background: #fef3c7;
-            color: #92400e;
-            text-align: center;
-            border-top: 1px solid #fde68a;
-        }
-
-        /* Scrollbar styling */
-        #chatMessages::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        #chatMessages::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 4px;
-        }
-
-        #chatMessages::-webkit-scrollbar-thumb {
-            background: #4F46E5;
-            border-radius: 4px;
-        }
-
-        #chatMessages::-webkit-scrollbar-thumb:hover {
-            background: #4338CA;
-        }
-
-        /* Message styling */
-        .message {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .message-content {
-            max-width: 70%;
-            padding: 12px 16px;
-            border-radius: 12px;
-            line-height: 1.5;
-            font-size: 15px;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-
-        .message.bot .message-content {
-            background: white;
-            color: #333;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            border-bottom-left-radius: 4px;
-        }
-
-        .message.user .message-content {
-            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
-            color: white;
-            border-bottom-right-radius: 4px;
-            margin-left: auto;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-
 
         .chat-container {
-            /* width: 100%; */
             max-width: 475px;
-            height: 490px;
+            width: 100%;
+            height: 90vh;
             background: white;
             border-radius: 10px;
-          /*  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); */
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
-        /* Chat Header - Fixed at top */
+        /* EMBEDDED MODE */
+        body.embedded {
+            background: white;
+            padding: 0;
+            margin: 0;
+        }
+
+        body.embedded .chat-container {
+            max-width: 100%;
+            width: 100%;
+            height: 100vh;
+            border-radius: 0;
+        }
+
+        body.embedded .chat-header {
+            display: none !important;
+        }
+
+        body.embedded #chatInterface {
+            height: 100vh !important;
+        }
+
+        body.embedded #pathSelectionScreen {
+            height: 100vh !important;
+        }
+
+        /* HEADER */
         .chat-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
             background: #302ab2;
             color: white;
-            flex-shrink: 0; /* Don't allow to shrink */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            z-index: 10;
+            padding: 16px 24px;
+            flex-shrink: 0;
         }
 
-        /* Header Left Side */
-        .header-left {
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .header-brand h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+        }
+
+        /* PATH SELECTION SCREEN */
+        #pathSelectionScreen {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            overflow-y: auto;
         }
 
-        /* Header Brand - Logo and Title */
-        .header-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        /* Logo Icon 
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            object-fit: contain;
-            background: white;
-            border-radius: 50%;
-            padding: 6px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }*/
-
-        /* H1 Title */
-        .header-brand h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: 700;
-            color: white;
-        }
-
-        /* Header Info - Mode and Counter Row */
-        .header-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding-left: 48px; /* Align with text, not logo */
-        }
-
-        /* Conversation Mode */
-        .conversation-mode {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 400;
-        }
-
-        /* Message Counter */
-        .message-counter {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 400;
-        }
-
-        /* Header Right Side */
-        .header-right {
-            display: flex;
-            align-items: center;
-        }
-
-        /* Reset Button - Wider */
-        .reset-button {
-            background: #4f46e5;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 10px 32px; /* Increased horizontal padding */
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            min-width: 140px; /* Ensures consistent width */
-            white-space: nowrap;
-        }
-
-        .reset-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-1px);
-        }
-
-        .reset-button:active {
-            transform: translateY(0);
-        }
-
-        /* Header Brand - Flexbox for logo and title */
-        .header-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px; /* Space between logo and text */
-        }
-
-        /* Logo Icon */
-        .logo-icon {
-            width: 40px; /* Adjust size as needed */
-            height: 40px;
-            object-fit: contain; /* Maintains aspect ratio */
-        }
-
-        /* Optional: Add a subtle animation on hover */
-        .logo-icon:hover {
-            transform: scale(1.05);
-            transition: transform 0.2s ease;
-        }
-
-        /* Adjust h1 margin if needed */
-        .header-brand h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .demo-badge {
-            font-size: 12px;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 4px 12px;
-            border-radius: 12px;
-            display: inline-block;
-        }
-
-        .header-controls {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            margin-top: 8px;
-        }
-
-        .conversation-mode {
-            font-size: 13px;
-            opacity: 0.9;
-        }
-
-        .message-counter {
-            font-size: 13px;
-            opacity: 0.9;
-        }
-
-        .reset-button {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px;
-            transition: background 0.2s;
-        }
-
-        .reset-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Path Selection Screen */
         .path-selection {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px 20px;
+            padding: 40px 20px;
             background: #f9fafb;
         }
 
         .selection-title {
             text-align: center;
             color: #1f2937;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             font-size: 20px;
             font-weight: 600;
         }
 
         .path-grid {
-            display: grid;
-         /*   grid-template-columns: repeat(2, 1fr); */
-            gap: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
             max-width: 700px;
             width: 100%;
             margin-bottom: 20px;
         }
 
         .path-button {
-        background: white;
-        border: 2px solid #e5e7eb;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-        /* text-align: center; */
-        display: flex;
-        padding: 6px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
         }
 
         .path-button:hover {
             border-color: #4F46E5;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
         }
 
-        .path-icon
-        {
+        .path-icon {
             font-size: 28px;
-            display: block;
-            margin-bottom: 5px;
             width: 25%;
+            text-align: center;
         }
 
         .path-text {
             width: 75%;
-            margin: auto;
             text-align: left;
-
         }
 
         .path-button h4 {
-          /*  margin: 0 0 8px 0; */
             color: #1f2937;
             font-size: 14px;
             font-weight: 600;
+            margin-bottom: 4px;
         }
 
         .path-button p {
-            margin: 0;
             color: #6b7280;
             font-size: 11px;
             line-height: 1.5;
@@ -526,17 +168,31 @@
             font-style: italic;
         }
 
-        /* Chat Messages - Scrollable Middle Section */
+        .disclaimer a {
+            color: #4F46E5;
+            text-decoration: none;
+        }
+
+        /* CHAT INTERFACE - FLEX LAYOUT */
+        #chatInterface {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* MESSAGES - SCROLLABLE */
         #chatMessages {
-            flex: 1; /* Take up remaining space */
-            overflow-y: auto; /* Enable vertical scrolling */
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
             padding: 20px;
+            background: white;
             display: flex;
             flex-direction: column;
             gap: 15px;
-            background: white;
-            min-height: 0; /* Critical for flex scrolling */
+            min-height: 0;
         }
 
         .message {
@@ -544,17 +200,6 @@
             align-items: flex-start;
             gap: 10px;
             animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .message.user {
@@ -572,9 +217,8 @@
         }
 
         .message.bot .message-content {
-            background: white;
+            background: #f3f4f6;
             color: #333;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             border-bottom-left-radius: 4px;
         }
 
@@ -584,71 +228,13 @@
             border-bottom-right-radius: 4px;
         }
 
-        .chat-input-container {
-            padding: 20px;
-            background: white;
-            border-top: 1px solid #e1e4e8;
-        }
-
-        .chat-input-wrapper {
-            display: flex;
-            gap: 10px;
-        }
-
-        #userInput {
-            flex: 1;
-            padding: 6px 12px;
-            border: 2px solid #e1e4e8;
-            border-radius: 6px;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        #userInput:focus {
-            border-color: #e1e4e8;
-        }
-
-        #userInput:disabled {
-            background: #f3f4f6;
-            cursor: not-allowed;
-        }
-
-        #sendButton {
-            padding: 6px 12px;
-            background: #302ab2;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        #sendButton:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
-        }
-
-        #sendButton:active {
-            transform: translateY(0);
-        }
-
-        #sendButton:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
         .typing-indicator {
             display: flex;
             gap: 5px;
             padding: 12px 16px;
-            background: white;
+            background: #f3f4f6;
             border-radius: 12px;
             width: fit-content;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .typing-indicator span {
@@ -659,104 +245,126 @@
             animation: bounce 1.4s infinite ease-in-out;
         }
 
-        .typing-indicator span:nth-child(1) {
-            animation-delay: -0.32s;
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
         }
 
-        .typing-indicator span:nth-child(2) {
-            animation-delay: -0.16s;
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
         }
 
         @keyframes bounce {
-            0%, 80%, 100% {
-                transform: scale(0);
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
             }
-            40% {
-                transform: scale(1);
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
+        /* SCROLLBAR */
+        #chatMessages::-webkit-scrollbar {
+            width: 8px;
+        }
 
+        #chatMessages::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
 
+        #chatMessages::-webkit-scrollbar-thumb {
+            background: #4F46E5;
+            border-radius: 4px;
+        }
 
+        #chatMessages::-webkit-scrollbar-thumb:hover {
+            background: #4338CA;
+        }
+
+        /* INPUT CONTAINER - FIXED AT BOTTOM */
+        .chat-input-container {
+            flex-shrink: 0;
+            padding: 16px 20px;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .chat-input-wrapper {
+            display: flex;
+            gap: 10px;
+        }
+
+        #userInput {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        #userInput:focus {
+            border-color: #302ab2;
+        }
+
+        #userInput:disabled {
+            background: #f3f4f6;
+            cursor: not-allowed;
+        }
+
+        #sendButton {
+            padding: 12px 24px;
+            background: #302ab2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #sendButton:hover:not(:disabled) {
+            transform: translateY(-1px);
+        }
+
+        #sendButton:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* RATE LIMIT - FIXED AT BOTTOM */
+        .rate-limit-notice {
+            flex-shrink: 0;
+            padding: 12px 20px;
+            background: #fef3c7;
+            color: #92400e;
+            text-align: center;
+            border-top: 1px solid #fde68a;
+            font-size: 14px;
+        }
 
         .hidden {
             display: none !important;
         }
-        /* Responsive */
-        @media (max-width: 768px) {
-            #chatInterface {
-                max-width: 100%;
-            }
-            
-            .chat-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-            
-            #chatMessages {
-                padding: 12px;
-            }
-            
-            .chat-input-container {
-                padding: 12px;
-            }
 
+        /* MOBILE */
+        @media (max-width: 768px) {
             .chat-container {
-                height: 103vh;
+                height: 100vh;
                 border-radius: 0;
                 max-width: 100%;
             }
-            
-            .path-grid {
-              /*  grid-template-columns: 1fr; */
-                gap: 15px;
-            }
 
-            .path-button {
-                padding: 20px 15px;
-            }
-
-            .path-icon {
-                font-size: 36px;
-                margin-bottom: 10px;
-            }
-            
             .message-content {
                 max-width: 85%;
-            }
-
-            .selection-title {
-                font-size: 22px;
-            }
-
-            .chat-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-            
-            .header-info {
-                padding-left: 0;
-                flex-wrap: wrap;
-            }
-            
-            .header-right {
-                width: 100%;
-            }
-            
-            .reset-button {
-                width: 100%;
-            }
-            
-            .logo-icon {
-                width: 32px;
-                height: 32px;
-            }
-            
-            .header-brand h1 {
-                font-size: 20px;
             }
         }
     </style>
@@ -769,7 +377,6 @@
                 <div class="header-brand">
                     <img src="src/DocuWareIcon.webp" alt="DocuBot Logo" class="logo-icon">
                     <h1>DocuBot</h1>
-                    <!-- <span class="demo-badge">Portfolio Demo by Mark</span> -->
                 </div>
             </div>
             
@@ -781,7 +388,7 @@
                         <div class="path-text">
                             <h4>I am a customer</h4>
                             <p>Get help with your DocuWare account and products</p>
-                        
+                        </div>
                     </button>
                     
                     <button class="path-button" onclick="selectPath('technical')">
@@ -789,43 +396,38 @@
                         <div class="path-text">
                             <h4>I need technical support</h4>
                             <p>Technical issues, setup, and troubleshooting</p>
-                    </div>
+                        </div>
                     </button>
                     
                     <button class="path-button" onclick="selectPath('partner')">
                         <div class="path-icon">🤝</div>
                         <div class="path-text">
                             <h4>I am a partner</h4>
-                            <p>Partner resources and support</p>    
+                            <p>Partner resources and support</p>
                         </div>
                     </button>
                     
                     <button class="path-button" onclick="selectPath('demo')">
                         <div class="path-icon">📊</div>
                         <div class="path-text">
-                        <h4>I want info/product demo</h4>
-                        <p>Learn about DocuWare products and request demos</p>
+                            <h4>I want info/product demo</h4>
+                            <p>Learn about DocuWare products and request demos</p>
                         </div>
                     </button>
                 </div>
                 <p class="disclaimer">
-                    Note: This is ademonstration. For actual DocuWare support, visit <a href="https://start.docuware.com
-                </p>" target="_blank">https://start.docuware.com</a>
+                    Note: This is a demonstration. For actual DocuWare support, visit 
+                    <a href="https://start.docuware.com" target="_blank">https://start.docuware.com</a>
                 </p>
             </div>
         </div>
 
         <!-- Chat Interface -->
         <div id="chatInterface" class="hidden">
-            <!-- chat-header will be hidden when embedded -->
-            <div class="chat-header">
-                <!-- header content -->
-            </div>
+            <!-- Messages - Scrollable -->
+            <div id="chatMessages"></div>
             
-            <!-- Scrollable messages area -->
-            <div id="chatMessages" class="chat-messages"></div>
-            
-            <!-- Fixed input container -->
+            <!-- Input - Fixed at Bottom -->
             <div class="chat-input-container">
                 <div class="chat-input-wrapper">
                     <input 
@@ -838,242 +440,190 @@
                 </div>
             </div>
 
-            <!-- Rate limit notice -->
+            <!-- Rate Limit Notice - Fixed at Bottom -->
             <div id="rateLimitNotice" class="rate-limit-notice hidden">
                 Message limit reached. Click "Start Over" to begin a new conversation.
             </div>
         </div>
+    </div>
 
-<script>
-    const API_URL = '/.netlify/functions/chat';
-    const MAX_MESSAGES = 20;
-    
-    let currentMode = null;
-    let messageCount = 0;
-    let conversationHistory = [];
-    let sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-    let rateLimitReached = false;
+    <script>
+        const API_URL = '/.netlify/functions/chat';
+        const MAX_MESSAGES = 20;
+        
+        let currentMode = null;
+        let messageCount = 0;
+        let conversationHistory = [];
+        let sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+        let rateLimitReached = false;
 
-    // Detect if embedded in iframe
-    const urlParams = new URLSearchParams(window.location.search);
-    const isEmbedded = window.self !== window.top || urlParams.get('embed') === 'true';
+        const urlParams = new URLSearchParams(window.location.search);
+        const isEmbedded = window.self !== window.top || urlParams.get('embed') === 'true';
 
-    // Add embedded class to body for CSS targeting
-    if (isEmbedded) {
-        document.addEventListener('DOMContentLoaded', () => {
-            document.body.classList.add('embedded');
-            document.documentElement.classList.add('embedded');
-        });
-    }
-
-    const pathTitles = {
-        customer: "I am a customer",
-        technical: "I need technical support",
-        partner: "I am a partner",
-        demo: "I want info/product demo"
-    };
-
-    const initialGreetings = {
-        customer: "Welcome! I'm here to help with your DocuWare account and products. What can I assist you with today?",
-        technical: "Hi! I can help you with technical issues, setup questions, and troubleshooting. What technical challenge are you facing?",
-        partner: "Hello! I can help you with partner resources and support. What do you need assistance with?",
-        demo: "Great! I can tell you about DocuWare's products and help you request a demo. What would you like to know?"
-    };
-
-    // Function to send updates to parent window (AWS site)
-    function sendToParent(data) {
-        if (isEmbedded && window.parent) {
-            window.parent.postMessage(data, '*');
-        }
-    }
-
-    // Hide header and adjust layout when embedded
-    window.addEventListener('DOMContentLoaded', () => {
         if (isEmbedded) {
-            // Hide the chatbot's header
-            const chatHeader = document.querySelector('.chat-header');
-            if (chatHeader) {
-                chatHeader.style.display = 'none';
+            document.body.classList.add('embedded');
+        }
+
+        const pathTitles = {
+            customer: "I am a customer",
+            technical: "I need technical support",
+            partner: "I am a partner",
+            demo: "I want info/product demo"
+        };
+
+        const initialGreetings = {
+            customer: "Welcome! I'm here to help with your DocuWare account and products. What can I assist you with today?",
+            technical: "Hi! I can help you with technical issues, setup questions, and troubleshooting. What technical challenge are you facing?",
+            partner: "Hello! I can help you with partner resources and support. What do you need assistance with?",
+            demo: "Great! I can tell you about DocuWare's products and help you request a demo. What would you like to know?"
+        };
+
+        function sendToParent(data) {
+            if (isEmbedded && window.parent) {
+                window.parent.postMessage(data, '*');
             }
-            
-            // Adjust chat interface to fill space
-            const chatInterface = document.getElementById('chatInterface');
-            if (chatInterface) {
-                chatInterface.style.height = '100vh';
-                chatInterface.style.maxHeight = '100vh';
+        }
+
+        window.addEventListener('message', (event) => {
+            if (event.data.type === 'reset-conversation') {
+                resetConversation();
             }
+        });
+
+        function selectPath(mode) {
+            currentMode = mode;
+            document.getElementById('pathSelectionScreen').classList.add('hidden');
+            document.getElementById('chatInterface').classList.remove('hidden');
             
-            // Adjust messages container
-            const chatMessages = document.getElementById('chatMessages');
-            if (chatMessages) {
-                chatMessages.style.height = 'calc(100vh - 100px)';
-            }
+            const greeting = initialGreetings[mode];
+            conversationHistory.push({ role: 'assistant', content: greeting });
+            addMessage(greeting, 'bot');
             
-            // Send initial state to parent
+            document.getElementById('userInput').focus();
+            
+            sendToParent({
+                type: 'mode-changed',
+                conversationMode: mode
+            });
+        }
+
+        function resetConversation() {
+            currentMode = null;
+            messageCount = 0;
+            conversationHistory = [];
+            sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+            rateLimitReached = false;
+            
+            document.getElementById('chatMessages').innerHTML = '';
+            document.getElementById('userInput').value = '';
+            document.getElementById('rateLimitNotice').classList.add('hidden');
+            
+            document.getElementById('chatInterface').classList.add('hidden');
+            document.getElementById('pathSelectionScreen').classList.remove('hidden');
+            
             sendToParent({
                 type: 'chatbot-state',
-                conversationMode: currentMode || '',
-                messageCount: messageCount,
+                conversationMode: '',
+                messageCount: 0,
                 maxMessages: MAX_MESSAGES
             });
         }
-    });
 
-    // Listen for commands from parent window
-    window.addEventListener('message', (event) => {
-        if (event.data.type === 'reset-conversation') {
-            resetConversation();
-        }
-    });
-
-    function selectPath(mode) {
-        currentMode = mode;
-        document.getElementById('pathSelectionScreen').classList.add('hidden');
-        document.getElementById('chatInterface').classList.remove('hidden');
-        document.getElementById('conversationMode').textContent = pathTitles[mode];
-        
-        // Add initial greeting
-        const greeting = initialGreetings[mode];
-        conversationHistory.push({ role: 'assistant', content: greeting });
-        addMessage(greeting, 'bot');
-        
-        document.getElementById('userInput').focus();
-        
-        // Send mode update to parent
-        sendToParent({
-            type: 'mode-changed',
-            conversationMode: mode
-        });
-    }
-
-    function resetConversation() {
-        currentMode = null;
-        messageCount = 0;
-        conversationHistory = [];
-        sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-        rateLimitReached = false;
-        
-        document.getElementById('chatMessages').innerHTML = '';
-        document.getElementById('userInput').value = '';
-        document.getElementById('messageCounter').textContent = '0/20 messages';
-        document.getElementById('rateLimitNotice').classList.add('hidden');
-        
-        document.getElementById('chatInterface').classList.add('hidden');
-        document.getElementById('pathSelectionScreen').classList.remove('hidden');
-        
-        // Send reset confirmation to parent
-        sendToParent({
-            type: 'chatbot-state',
-            conversationMode: '',
-            messageCount: 0,
-            maxMessages: MAX_MESSAGES
-        });
-    }
-
-    async function sendMessage() {
-        const userInput = document.getElementById('userInput');
-        const sendButton = document.getElementById('sendButton');
-        const message = userInput.value.trim();
-        
-        if (!message || rateLimitReached) return;
-
-        if (messageCount >= MAX_MESSAGES) {
-            rateLimitReached = true;
-            document.getElementById('rateLimitNotice').classList.remove('hidden');
-            return;
-        }
-        
-        // Disable input while processing
-        userInput.disabled = true;
-        sendButton.disabled = true;
-        
-        // Add user message to history and display
-        conversationHistory.push({ role: 'user', content: message });
-        addMessage(message, 'user');
-        userInput.value = '';
-        
-        // Show typing indicator
-        const chatMessages = document.getElementById('chatMessages');
-        const typingIndicator = document.createElement('div');
-        typingIndicator.className = 'message bot';
-        typingIndicator.id = 'typingIndicator';
-        typingIndicator.innerHTML = `
-            <div class="typing-indicator">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        `;
-        chatMessages.appendChild(typingIndicator);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-        
-        try {
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    messages: conversationHistory,
-                    sessionId: sessionId,
-                    conversationMode: currentMode
-                })
-            });
+        async function sendMessage() {
+            const userInput = document.getElementById('userInput');
+            const sendButton = document.getElementById('sendButton');
+            const message = userInput.value.trim();
             
-            // Remove typing indicator
-            document.getElementById('typingIndicator')?.remove();
-            
-            if (!response.ok) {
-                throw new Error(`Server error: ${response.status}`);
-            }
-            
-            const data = await response.json();
-            
-            if (data.rateLimited) {
+            if (!message || rateLimitReached) return;
+
+            if (messageCount >= MAX_MESSAGES) {
                 rateLimitReached = true;
                 document.getElementById('rateLimitNotice').classList.remove('hidden');
-                addMessage('Rate limit reached. Please click "Start Over" to begin a new conversation.', 'bot');
-            } else if (data.error) {
-                throw new Error(data.error);
-            } else {
-                // Add assistant response to history and display
-                conversationHistory.push({ role: 'assistant', content: data.message });
-                addMessage(data.message, 'bot');
-                messageCount++;
-                document.getElementById('messageCounter').textContent = `${messageCount}/${MAX_MESSAGES} messages`;
-                
-                // Send message count update to parent
-                sendToParent({
-                    type: 'message-added',
-                    messageCount: messageCount,
-                    maxMessages: MAX_MESSAGES
-                });
+                return;
             }
             
-        } catch (error) {
-            document.getElementById('typingIndicator')?.remove();
-            addMessage('Sorry, I encountered an error. Please try again.', 'bot');
-            console.error('Error:', error);
-        } finally {
-            userInput.disabled = false;
-            sendButton.disabled = false;
-            userInput.focus();
+            userInput.disabled = true;
+            sendButton.disabled = true;
+            
+            conversationHistory.push({ role: 'user', content: message });
+            addMessage(message, 'user');
+            userInput.value = '';
+            
+            const chatMessages = document.getElementById('chatMessages');
+            const typingIndicator = document.createElement('div');
+            typingIndicator.className = 'message bot';
+            typingIndicator.id = 'typingIndicator';
+            typingIndicator.innerHTML = `
+                <div class="typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            `;
+            chatMessages.appendChild(typingIndicator);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        messages: conversationHistory,
+                        sessionId: sessionId,
+                        conversationMode: currentMode
+                    })
+                });
+                
+                document.getElementById('typingIndicator')?.remove();
+                
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (data.rateLimited) {
+                    rateLimitReached = true;
+                    document.getElementById('rateLimitNotice').classList.remove('hidden');
+                    addMessage('Rate limit reached. Please click "Start Over" to begin a new conversation.', 'bot');
+                } else if (data.error) {
+                    throw new Error(data.error);
+                } else {
+                    conversationHistory.push({ role: 'assistant', content: data.message });
+                    addMessage(data.message, 'bot');
+                    messageCount++;
+                    
+                    sendToParent({
+                        type: 'message-added',
+                        messageCount: messageCount,
+                        maxMessages: MAX_MESSAGES
+                    });
+                }
+                
+            } catch (error) {
+                document.getElementById('typingIndicator')?.remove();
+                addMessage('Sorry, I encountered an error. Please try again.', 'bot');
+                console.error('Error:', error);
+            } finally {
+                userInput.disabled = false;
+                sendButton.disabled = false;
+                userInput.focus();
+            }
         }
-    }
-    
-    function addMessage(text, type) {
-        const chatMessages = document.getElementById('chatMessages');
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `message ${type}`;
         
-        const contentDiv = document.createElement('div');
-        contentDiv.className = 'message-content';
-        contentDiv.textContent = text;
-        
-        messageDiv.appendChild(contentDiv);
-        chatMessages.appendChild(messageDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-</script>
+        function addMessage(text, type) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            contentDiv.textContent = text;
+            
+            messageDiv.appendChild(contentDiv);
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    </script>
 </body>
 </html>

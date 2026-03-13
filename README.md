@@ -91,11 +91,6 @@ Edit `public/index.html` - customize:
 - Lead capture and qualification
 - FAQ automation
 
-**Pricing for Clients:**
-- Setup: $1,500 - $3,000
-- Monthly maintenance: $300 - $500
-- Your cost: ~$5-10/month
-- Profit: $2,000+ per client/year
 
 ## 🔧 Development
 
